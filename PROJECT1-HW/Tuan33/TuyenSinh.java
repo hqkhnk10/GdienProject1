@@ -18,8 +18,15 @@ public class TuyenSinh {
         this.ThiSinhs.forEach(ThiSinh -> System.out.println(ThiSinh.toString()));
     }
 
-    public ThiSinh searchById(String id) {
-        return this.ThiSinhs.stream().filter(ThiSinh -> ThiSinh.getId().equals(id)).findFirst().orElse(null);
+    public ThiSinh searchById(int id) {
+        return this.ThiSinhs.stream().filter(ThiSinh -> ThiSinh.getId() == id).findFirst().orElse(null);
     }
 
+    public void removeTS(ThiSinh ts) {
+        ThiSinhs.remove(ts);
+    }
+
+    public List<ThiSinh> getThiSinh() {
+        return ThiSinhs;
+    }
 }

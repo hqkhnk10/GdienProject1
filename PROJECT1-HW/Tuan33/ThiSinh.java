@@ -1,23 +1,29 @@
 package Tuan33;
 
 public class ThiSinh {
-    protected String id;
+    protected int id;
     protected String name;
     protected String address;
     protected int priority;
+    private static int count;
 
-    public ThiSinh(String id, String name, String address, int priority) {
+    public ThiSinh() {
+        count++;
+        id = count;
+    }
+
+    public ThiSinh(int id, String name, String address, int priority) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.priority = priority;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

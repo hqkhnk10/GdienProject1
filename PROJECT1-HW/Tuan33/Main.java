@@ -48,7 +48,7 @@ public class Main {
                 }
                 case "3": {
                     System.out.print("Nhan ID: ");
-                    String id = scanner.nextLine();
+                    int id = scanner.nextInt();
                     ThiSinh ThiSinh = managerThiSinh.searchById(id);
                     if (ThiSinh == null) {
                         System.out.println("Not found");
@@ -70,7 +70,7 @@ public class Main {
 
     public static ThiSinh ThemThiSinh(Scanner scanner, String type) {
         System.out.print("Nhan ID: ");
-        String id = scanner.nextLine();
+        int id = scanner.nextInt();
         System.out.print("Nhan name: ");
         String name = scanner.nextLine();
         System.out.print("Nhan address: ");

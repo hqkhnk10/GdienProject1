@@ -2,8 +2,14 @@
 
 import java.awt.event.ActionEvent;
 
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+
+import Tuan33.ThiSinh;
+import Tuan33.TuyenSinh;
 
 public class GUI extends javax.swing.JFrame {
 
@@ -59,12 +65,13 @@ public class GUI extends javax.swing.JFrame {
                 result5.setEditable(false);
                 code5.setVisible(false);
                 result5.setVisible(false);
-                code5.setText("Main.java\n\n//Ngo Quang Truong -20198265\n\nimport java.util.Scanner;\n\npublic class Main {\n\npublic static void main(String[] args) {\n\nScanner scanner = new Scanner(System.in);\n\nTuyenSinh managerThiSinh = new TuyenSinh();\n\nwhile (true) {\n\nSystem.out.println(\"Danh sach Thi Sinh\");\n\nSystem.out.println(\"Nhan 1: Them Thi Sinh\");\n\nSystem.out.println(\"Nhan 2: Hien thong tin ThiSinh: \");\n\nSystem.out.println(\"Nhan 3: Tim kiem ThiSinh bang id\");\n\nSystem.out.println(\"Nhan 4: De exit:\");\n\nString line = scanner.nextLine();\n\nswitch (line) {\n\ncase \"1\": {\n\nSystem.out.println(\"Nhan a: Them ThiSinh A\");\n\nSystem.out.println(\"Nhan b: Them ThiSinh B\");\n\nSystem.out.println(\"Nhan c: Them ThiSinh C\");\n\nString type = scanner.nextLine();\n\nswitch (type) {\n\ncase \"a\": {\n\nmanagerThiSinh.add(ThemThiSinh(scanner, \"a\"));\n\nbreak;\n\n}\n\ncase \"b\": {\n\nmanagerThiSinh.add(ThemThiSinh(scanner, \"b\"));\n\nbreak;\n\n}\n\ncase \"c\": {\n\nmanagerThiSinh.add(ThemThiSinh(scanner, \"c\"));\n\nbreak;\n\n}\n\ndefault:\n\nSystem.out.println(\"Invalid\");\n\nbreak;\n\n}\n\nbreak;\n\n}\n\ncase \"2\": {\n\nmanagerThiSinh.showInfor();\n\nbreak;\n\n}\n\ncase \"3\": {\n\nSystem.out.print(\"Nhan ID: \");\n\nString id = scanner.nextLine();\n\nThiSinh ThiSinh = managerThiSinh.searchById(id);\n\nif (ThiSinh == null) {\n\nSystem.out.println(\"Not found\");\n\n} else {\n\nSystem.out.println(ThiSinh.toString());\n\n}\n\nbreak;\n\n}\n\ncase \"4\": {\n\nreturn;\n\n}\n\ndefault:\n\nSystem.out.println(\"Invalid\");\n\ncontinue;\n\n}\n\n}\n\n}\n\npublic static ThiSinh ThemThiSinh(Scanner scanner, String type) {\n\nSystem.out.print(\"Nhan ID: \");\n\nString id = scanner.nextLine();\n\nSystem.out.print(\"Nhan name: \");\n\nString name = scanner.nextLine();\n\nSystem.out.print(\"Nhan address: \");\n\nString address = scanner.nextLine();\n\nSystem.out.print(\"Nhan Priotity: \");\n\nint priority = scanner.nextInt();\n\nscanner.nextLine();\n\nif (type.equals(\"a\")) {\n\nreturn new ThiSinhA(id, name, address, priority);\n\n} else if (type.equals(\"b\")) {\n\nreturn new ThiSinhB(id, name, address, priority);\n\n} else {\n\nreturn new ThiSinhC(id, name, address, priority);\n\n}\n\n}\n\n}\n\nThiSinh.java\n\npublic class ThiSinh {\n\nprotected String id;\n\nprotected String name;\n\nprotected String address;\n\nprotected int priority;\n\npublic ThiSinh(String id, String name, String address, int priority) {\n\nthis.id = id;\n\nthis.name = name;\n\nthis.address = address;\n\nthis.priority = priority;\n\n}\n\npublic String getId() {\n\nreturn id;\n\n}\n\npublic void setId(String id) {\n\nthis.id = id;\n\n}\n\npublic String getName() {\n\nreturn name;\n\n}\n\npublic void setName(String name) {\n\nthis.name = name;\n\n}\n\npublic String getAddress() {\n\nreturn address;\n\n}\n\npublic void setAddress(String address) {\n\nthis.address = address;\n\n}\n\npublic int getPriority() {\n\nreturn priority;\n\n}\n\npublic void setPriority(int priority) {\n\nthis.priority = priority;\n\n}\n\n}\n\npublic class ThiSinh {\n\nprotected String id;\n\nprotected String name;\n\nprotected String address;\n\nprotected int priority;\n\npublic ThiSinh(String id, String name, String address, int priority) {\n\nthis.id = id;\n\nthis.name = name;\n\nthis.address = address;\n\nthis.priority = priority;\n\n}\n\npublic String getId() {\n\nreturn id;\n\n}\n\npublic void setId(String id) {\n\nthis.id = id;\n\n}\n\npublic String getName() {\n\nreturn name;\n\n}\n\npublic void setName(String name) {\n\nthis.name = name;\n\n}\n\npublic String getAddress() {\n\nreturn address;\n\n}\n\npublic void setAddress(String address) {\n\nthis.address = address;\n\n}\n\npublic int getPriority() {\n\nreturn priority;\n\n}\n\npublic void setPriority(int priority) {\n\nthis.priority = priority;\n\n}\n\n}\n\nThiSinhA.java\n\npublic class ThiSinhA extends ThiSinh {\n\npublic static final String MON_TOAN = \"Toan\";\n\npublic static final String MON_LY = \"Ly\";\n\npublic static final String MON_HOA = \"Hoa\";\n\npublic ThiSinhA(String id, String name, String address, int priority) {\n\nsuper(id, name, address, priority);\n\n}\n\n@Override\n\npublic String toString() {\n\nreturn \"ThiSinhA{\" +\n\n\"id='\" + id + '\'' +\n\n\", name='\" + name + '\'' +\n\n\", address='\" + address + '\'' +\n\n\", priority=\" + priority + \", Subject: \" + MON_TOAN + \" - \" + MON_LY + \" - \" + MON_HOA +\n\n'}';\n\n}\n\n}\n\nThiSinhB.java\n\npublic class ThiSinhB extends ThiSinh {\n\npublic static final String MON_TOAN = \"Toan\";\n\npublic static final String MON_HOA = \"Hoa\";\n\npublic static final String MON_SINH = \"Sinh\";\n\npublic ThiSinhB(String id, String name, String address, int priority) {\n\nsuper(id, name, address, priority);\n\n}\n\n@Override\n\npublic String toString() {\n\nreturn \"ThiSinhB{\" +\n\n\"id='\" + id + '\'' +\n\n\", name='\" + name + '\'' +\n\n\", address='\" + address + '\'' +\n\n\", priority=\" + priority + \", Subject: \" + MON_TOAN + \" - \" + MON_SINH + \" - \" + MON_HOA +\n\n'}';\n\n}\n\n}\n\nThiSinhC.java\n\npublic class ThiSinhC extends ThiSinh {\n\npublic static final String MON_VAN = \"Van\";\n\npublic static final String MON_SU = \"Su\";\n\npublic static final String MON_DIA = \"Dia\";\n\npublic ThiSinhC(String id, String name, String address, int priority) {\n\nsuper(id, name, address, priority);\n\n}\n\n@Override\n\npublic String toString() {\n\nreturn \"ThiSinhC{\" +\n\n\"id='\" + id + '\'' +\n\n\", name='\" + name + '\'' +\n\n\", address='\" + address + '\'' +\n\n\", priority=\" + priority + \", Subject: \" + MON_VAN + \" - \" + MON_SU + \" - \" + MON_DIA +\n\n'}';\n\n}\n\n}\n\nTuyenSinh.java\n\nimport java.util.ArrayList;\n\nimport java.util.List;\n\npublic class TuyenSinh {\n\nList<ThiSinh> ThiSinhs;\n\npublic TuyenSinh() {\n\nthis.ThiSinhs = new ArrayList<>();\n\n}\n\npublic void add(ThiSinh ThiSinh) {\n\nthis.ThiSinhs.add(ThiSinh);\n\n}\n\npublic void showInfor() {\n\nthis.ThiSinhs.forEach(ThiSinh -> System.out.println(ThiSinh.toString()));\n\n}\n\npublic ThiSinh searchById(String id) {\n\nreturn this.ThiSinhs.stream().filter(ThiSinh -> ThiSinh.getId().equals(id)).findFirst().orElse(null);\n\n}\n\n}\n");
-                result5.setText("Danh sach Thi Sinh\nNhan 1: Them Thi Sinh\nNhan 2: Hien thong tin ThiSinh: \nNhan 3: Tim kiem ThiSinh bang id\nNhan 4: De exit:\n1\nNhan a: Them ThiSinh A\nNhan b: Them ThiSinh B\nNhan c: Them ThiSinh C\na\nNhan ID: 1\nNhan name: Lung Thi Linh\nNhan address: DH Bach Khoa\nNhan Priotity: 1\nDanh sach Thi Sinh\nNhan 1: Them Thi Sinh\nNhan 2: Hien thong tin ThiSinh:\nNhan 3: Tim kiem ThiSinh bang id\nNhan 4: De exit:\n1\nNhan a: Them ThiSinh A\nNhan b: Them ThiSinh B\nNhan c: Them ThiSinh C\na\nNhan ID: 2\nNhan name: Ngo Quang Truong\nNhan address: DH Cong Nghe\nNhan Priotity: 3\nDanh sach Thi Sinh\nNhan 1: Them Thi Sinh\nNhan 2: Hien thong tin ThiSinh:\nNhan 3: Tim kiem ThiSinh bang id\nNhan 4: De exit:\n2\nThiSinhA{id='1', name='Lung Thi Linh', address='DH Bach Khoa', priority=1, Subject: Toan - Ly - Hoa}\nThiSinhA{id='2', name='Ngo Quang Truong', address='DH Cong Nghe', priority=3, Subject: Toan - Ly - Hoa}\nDanh sach Thi Sinh\nNhan 1: Them Thi Sinh\nNhan 2: Hien thong tin ThiSinh:\nNhan 3: Tim kiem ThiSinh bang id\nNhan 4: De exit:\n3\nNhan ID: 2\nThiSinhA{id='2', name='Ngo Quang Truong', address='DH Cong Nghe', priority=3, Subject: Toan - Ly - Hoa}\nDanh sach Thi Sinh\nNhan 1: Them Thi Sinh\nNhan 2: Hien thong tin ThiSinh:\nNhan 3: Tim kiem ThiSinh bang id\nNhan 4: De exit:\n4\n\n");
+                code5.setText("Bai3");
                 code5.setFont(new java.awt.Font("Times New Roman", 1, 14));
                 result5.setFont(new java.awt.Font("Times New Roman", 1, 14));
-                sp = new JScrollPane(code5);
-
+                table = new JTable();
+                listTS = new TuyenSinh();
+                jScrollPane1 = new JScrollPane();
+                t1 = new JTextField();
                 testField2 = new JTextField();
                 testField2.setVisible(false);
                 testField3 = new JTextField();
@@ -223,7 +230,11 @@ public class GUI extends javax.swing.JFrame {
                 jLabel17 = new javax.swing.JLabel();
                 Tuan5 = new javax.swing.JPanel();
                 jLabel6 = new javax.swing.JLabel();
-
+                b1 = new javax.swing.JButton("Thêm");
+                b2 = new javax.swing.JButton("Sửa");
+                b3 = new javax.swing.JButton("Xóa");
+                b4 = new javax.swing.JButton("Tìm kiếm");
+                b5 = new javax.swing.JButton("Cập nhật");
                 setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
                 setTitle("Quản lý bài tập tuần");
                 setVisible(true);
@@ -485,6 +496,31 @@ public class GUI extends javax.swing.JFrame {
                 jButton409.addActionListener(new java.awt.event.ActionListener() {
                         public void actionPerformed(java.awt.event.ActionEvent evt) {
                                 jButton409ActionPerformed(evt);
+                        }
+                });
+                b1.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                b1ActionPerformed(evt);
+                        }
+                });
+                b2.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                b2ActionPerformed(evt);
+                        }
+                });
+                b3.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                b3ActionPerformed(evt);
+                        }
+                });
+                b4.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                b4ActionPerformed(evt);
+                        }
+                });
+                b5.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                b5ActionPerformed(evt);
                         }
                 });
                 jButton101.setFont(new java.awt.Font("Times New Roman", 1, 18));
@@ -1454,15 +1490,18 @@ public class GUI extends javax.swing.JFrame {
                                                                                                 javax.swing.GroupLayout.Alignment.LEADING)
                                                                                 .addGap(47, 47, 47)
                                                                                 .addComponent(jLabel6)
-                                                                                .addComponent(sp,
-                                                                                                800,
-                                                                                                800,
-                                                                                                800)
-
-                                                                                .addComponent(result5,
-                                                                                                800,
-                                                                                                800,
-                                                                                                800))
+                                                                                .addComponent(b1)
+                                                                                .addComponent(b2)
+                                                                                .addComponent(b3)
+                                                                                .addComponent(b4)
+                                                                                .addComponent(t1)
+                                                                                .addComponent(b5)
+                                                                                .addComponent(code5)
+                                                                                .addGap(47, 47, 47)
+                                                                                .addComponent(jScrollPane1, 400, 400,
+                                                                                                400)
+                                                                                .addGap(47, 47, 47)
+                                                                                .addComponent(result5))
                                                                 .addContainerGap(647, Short.MAX_VALUE)));
                 Tuan5Layout.setVerticalGroup(
                                 Tuan5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1474,16 +1513,21 @@ public class GUI extends javax.swing.JFrame {
                                                                                 .addGroup(Tuan5Layout
                                                                                                 .createSequentialGroup()
                                                                                                 .addComponent(jLabel6)
-
-                                                                                                .addComponent(sp,
-                                                                                                                500,
-                                                                                                                500,
-                                                                                                                500)
-
-                                                                                                .addComponent(result5,
-                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                                                                .addComponent(b1)
+                                                                                                .addComponent(b2)
+                                                                                                .addComponent(b3)
+                                                                                                .addComponent(b4)
+                                                                                                .addComponent(t1)
+                                                                                                .addComponent(b5)
+                                                                                                .addGap(47, 47, 47)
+                                                                                                .addComponent(code5)
+                                                                                                .addGap(47, 47, 47)
+                                                                                                .addComponent(jScrollPane1,
+                                                                                                                400,
+                                                                                                                400,
+                                                                                                                400)
+                                                                                                .addGap(47, 47, 47)
+                                                                                                .addComponent(result5)))
                                                                 .addContainerGap(600,
                                                                                 Short.MAX_VALUE)));
 
@@ -1532,6 +1576,51 @@ public class GUI extends javax.swing.JFrame {
                 pack();
                 setLocationRelativeTo(null);
         }// </editor-fold>//GEN-END:initComponents
+
+        protected void b5ActionPerformed(ActionEvent evt) {
+                populateTable();
+        }
+
+        protected void b4ActionPerformed(ActionEvent evt) {
+                int count = 0;
+                for (ThiSinh ts : listTS.getThiSinh()) {
+
+                        if (Integer.parseInt(t1.getText()) == ts.getId()) {
+                                new DisplayFrame(ts);
+                                count++;
+                        }
+
+                }
+                if (count == 0) {
+                        JOptionPane.showMessageDialog(null, "Không có thuốc");
+                }
+        }
+
+        protected void b3ActionPerformed(ActionEvent evt) {
+                int selectedRow = table.getSelectedRow();
+                if (selectedRow < 0) {
+                        JOptionPane.showMessageDialog(null, "Please select a row to view", "Warning",
+                                        JOptionPane.WARNING_MESSAGE);
+                        return;
+                }
+                ThiSinh ts = listTS.searchById(Integer.parseInt(table.getValueAt(selectedRow, 0).toString()));
+                listTS.removeTS(ts);
+        }
+
+        protected void b2ActionPerformed(ActionEvent evt) {
+                int selectedRow = table.getSelectedRow();
+                if (selectedRow < 0) {
+                        JOptionPane.showMessageDialog(null, "Please select a row to view", "Warning",
+                                        JOptionPane.WARNING_MESSAGE);
+                        return;
+                }
+                ThiSinh ts = listTS.searchById(Integer.parseInt(table.getValueAt(selectedRow, 0).toString()));
+                new ModifyNewFrame(ts);
+        }
+
+        protected void b1ActionPerformed(ActionEvent evt) {
+                new AddFrame(listTS);
+        }
 
         protected void jButton101ActionPerformed(ActionEvent evt) {
                 result1.setVisible(true);
@@ -1784,6 +1873,28 @@ public class GUI extends javax.swing.JFrame {
                 mainPanel.removeAll();
                 mainPanel.repaint();
                 mainPanel.revalidate();
+                ThiSinh a = new ThiSinh(0, "Ngo Truong", "DHBK", 1);
+                listTS.add(a);
+                // Column Names
+                table.setModel(new javax.swing.table.DefaultTableModel(
+                                new Object[][] {
+                                                { null, null, null, null },
+                                                { null, null, null, null }
+
+                                },
+                                new Object[] {
+                                                "ID", "Tên", "Địa chỉ", "Ưu tiên"
+                                }) {
+                        boolean[] canEdit = new boolean[] {
+                                        false, false, false, false
+                        };
+
+                        public boolean isCellEditable(int rowIndex, int columnIndex) {
+                                return canEdit[columnIndex];
+                        }
+                });
+                populateTable();
+                jScrollPane1.setViewportView(table);
 
                 code5.setVisible(true);
 
@@ -1792,6 +1903,21 @@ public class GUI extends javax.swing.JFrame {
                 mainPanel.add(Tuan5);
                 mainPanel.repaint();
                 mainPanel.revalidate();
+        }
+
+        public void populateTable() {
+                DefaultTableModel dtm = (DefaultTableModel) table.getModel();
+                dtm.setRowCount(0); // to make row count 0
+                // int rowCount = accountJTable.getRowCount();
+
+                for (ThiSinh TS : listTS.getThiSinh()) {
+                        Object[] row = new Object[4];
+                        row[0] = TS.getId();
+                        row[1] = TS.getName();
+                        row[2] = TS.getAddress();
+                        row[3] = TS.getPriority();
+                        dtm.addRow(row);
+                }
         }
 
         private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton1ActionPerformed
@@ -2139,6 +2265,11 @@ public class GUI extends javax.swing.JFrame {
         private javax.swing.JButton btnTuan3;
         private javax.swing.JButton btnTuan4;
         private javax.swing.JButton btnTuan5;
+        private javax.swing.JButton b1;
+        private javax.swing.JButton b2;
+        private javax.swing.JButton b3;
+        private javax.swing.JButton b4;
+        private javax.swing.JButton b5;
         private javax.swing.JButton jButton1;
         private javax.swing.JButton jButton10;
         private javax.swing.JButton jButton11;
@@ -2234,9 +2365,12 @@ public class GUI extends javax.swing.JFrame {
         private javax.swing.JTextArea result4;
         private javax.swing.JTextArea code5;
         private javax.swing.JTextArea result5;
-        private JScrollPane sp;
+        private JTextField t1;
         private JTextField testField2;
         private JTextField testField3;
         private JTextField testField4;
+        private JTable table;
+        private TuyenSinh listTS;
+        private JScrollPane jScrollPane1;
         // End of variables declaration//GEN-END:variables
 }

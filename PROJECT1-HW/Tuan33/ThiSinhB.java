@@ -6,7 +6,7 @@ public class ThiSinhB extends ThiSinh {
     public static final String MON_HOA = "Hoa";
     public static final String MON_SINH = "Sinh";
 
-    public ThiSinhB(String id, String name, String address, int priority) {
+    public ThiSinhB(int id, String name, String address, int priority) {
         super(id, name, address, priority);
     }
 

@@ -6,7 +6,7 @@ public class ThiSinhC extends ThiSinh {
     public static final String MON_SU = "Su";
     public static final String MON_DIA = "Dia";
 
-    public ThiSinhC(String id, String name, String address, int priority) {
+    public ThiSinhC(int id, String name, String address, int priority) {
         super(id, name, address, priority);
     }
 
